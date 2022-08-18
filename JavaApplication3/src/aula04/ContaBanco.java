@@ -4,16 +4,16 @@ package aula04;
 public class ContaBanco {
     
     private String nome;
-    private int nomeConta;
+    private int NumConta;
     private double saldoConta;
     private double limiteChuq;
 
     public ContaBanco() {
     }
 
-    public ContaBanco(String nome, int nomeConta, double saldoConta, double limiteChuq) {
+    public ContaBanco(String nome, int NumConta, double saldoConta, double limiteChuq) {
         this.nome = nome;
-        this.nomeConta = nomeConta;
+        this.NumConta = NumConta;
         this.saldoConta = saldoConta;
         this.limiteChuq = limiteChuq;
     }
@@ -26,12 +26,12 @@ public class ContaBanco {
         this.nome = nome;
     }
 
-    public int getnomeConta() {
-        return nomeConta;
+    public int getNumConta() {
+        return NumConta;
     }
 
-    public void setnomeConta(int nomeConta) {
-        this.nomeConta = nomeConta;
+    public void setNumConta(int NumConta) {
+        this.NumConta = NumConta;
     }
 
     public double getSaldoConta() {
@@ -48,5 +48,10 @@ public class ContaBanco {
 
     public void setLimiteChuq(double limiteChuq) {
         this.limiteChuq = limiteChuq;
+    }
+    
+    @Override
+    public String toString(){
+        return nome;
     }
 }

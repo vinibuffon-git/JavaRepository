@@ -11,8 +11,12 @@ public class TestarPessoa {
         objPessoa1.isAluno();
 
         Pessoa objPessoa2 = new Pessoa("Maria Clara", "Salvador", 17, true);
+        
+        ContaBanco objContaBanco = new ContaBanco("Vinícius Buffon", 123456, 999999.99, 999.99);
 
         System.out.println(objPessoa1);
+        
+        System.out.println(objContaBanco);
         
     }
 }
