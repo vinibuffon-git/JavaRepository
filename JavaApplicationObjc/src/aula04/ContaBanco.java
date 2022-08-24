@@ -1,8 +1,7 @@
-
 package aula04;
 
 public class ContaBanco {
-    
+
     private String nome;
     private int NumConta;
     private double saldoConta;
@@ -49,9 +48,33 @@ public class ContaBanco {
     public void setLimiteChuq(double limiteChuq) {
         this.limiteChuq = limiteChuq;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return nome;
+    }
+
+    public void depositar(double valor) {
+        this.saldoConta += valor;
+    }
+
+    public boolean sacar(double valor) {
+        if (this.saldoConta >= valor) {
+            this.saldoConta -= valor;
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean transferir(double valorTransferido, ContaBanco objContaDestino) {
+        if (this.saldoConta >= valorTransferido){
+            this.saldoConta -= valorTransferido;
+            objContaDestino.saldoConta += valorTransferido;
+            return true;
+        } else {
+            return false;
+        }
+        
     }
 }
