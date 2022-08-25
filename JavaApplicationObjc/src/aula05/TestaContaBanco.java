@@ -45,7 +45,6 @@ public class TestaContaBanco {
                     + "ficiente, saldo não alterado");
         }
         
-        
         System.out.println("Saldo Conta 1: " + objConta1.getSaldoConta());
         System.out.println("Saldo Conta 2: " + objConta2.getSaldoConta());
     }
