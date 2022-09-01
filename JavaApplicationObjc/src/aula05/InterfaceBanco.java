@@ -33,10 +33,14 @@ public class InterfaceBanco extends javax.swing.JFrame {
         lblNome1.setText(objConta1.getNome());
         lblNumConta1.setText("Número da Conta: " + objConta1.getNumConta());
         lblSaldoConta1.setText("Saldo: " + objConta1.getSaldoConta() + " R$");
+        lblCheqLimit1.setText("Limite do cheque: " +objConta1.getSaldoConta() 
+                + " R$");
 
         lblNome2.setText(objConta2.getNome());
         lblNumConta2.setText("Número da Conta: " + objConta2.getNumConta());
         lblSaldoConta2.setText("Saldo: " + objConta2.getSaldoConta() + " R$");
+        lblCheqLimit2.setText("Limite do cheque: " +objConta2.getSaldoConta() 
+                + " R$");
     }
 
     private void atualizarSaldos() {
@@ -268,17 +272,28 @@ public class InterfaceBanco extends javax.swing.JFrame {
         // Sacar da conta 1.
         try {
             double valorSac = Double.parseDouble(txtField1.getText());
+            boolean resposta = CaixaDeDialogo.obterinstancia()
+                    .pedirConfirmacao("Confirma o saque no valor de " + valorSac 
+                            + "?","Confirmação", 'p');
+            if (resposta == true){
             if (objConta1.sacar(valorSac)) {
                 //Sucesso
                 atualizarSaldos();
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Operação bem Sucedida", 'i');
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Operação bem "
+                        + "sucedida", 'i');
             } else {
                 //Erro
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Saldo insuficiente", 'i');
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Saldo i"
+                        + "nsuficiente", 'i');
             }
+            } else {
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Operação "
+                            + "cancelada pelo usuário", 'e');
+                    }
         } catch (Exception ex) {
             System.out.println("Erro " + ex.getMessage());
         }
+        
     }//GEN-LAST:event_btnSacar1ActionPerformed
 
     private void txtField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtField1ActionPerformed

@@ -59,7 +59,7 @@ public class ContaBanco {
     }
 
     public boolean sacar(double valor) {
-        if (this.saldoConta >= valor) {
+        if ((this.saldoConta+this.limiteChuq) >= valor) {
             this.saldoConta -= valor;
             return true;
         }else{
