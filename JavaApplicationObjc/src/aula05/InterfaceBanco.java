@@ -23,12 +23,12 @@ public class InterfaceBanco extends javax.swing.JFrame {
         objConta1 = new ContaBanco();
         objConta1.setNome("Jucab da Silva");
         objConta1.setNumConta(123);
-        objConta1.setSaldoConta(500);
+        objConta1.setSaldoConta(1000);
 
         objConta2 = new ContaBanco();
         objConta2.setNome("Pericles Pereira");
         objConta2.setNumConta(456);
-        objConta2.setSaldoConta(1000);
+        objConta2.setSaldoConta(2000);
 
         lblNome1.setText(objConta1.getNome());
         lblNumConta1.setText("Número da Conta: " + objConta1.getNumConta());
