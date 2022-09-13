@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package aula05;
+package AppBanco;
 
-import aula04.ContaBanco;
 import tools.CaixaDeDialogo;
 
 /**
@@ -21,7 +20,7 @@ public class InterfaceBanco extends javax.swing.JFrame {
         initComponents();
 
         objConta1 = new ContaBanco();
-        objConta1.setNome("Jucab da Silva");
+        objConta1.setNome("Juca da Silva");
         objConta1.setNumConta(123);
         objConta1.setSaldoConta(1000);
 

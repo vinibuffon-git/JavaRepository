@@ -1,4 +1,4 @@
-package aula04;
+package AppBanco;
 
 public class ContaBanco {
 

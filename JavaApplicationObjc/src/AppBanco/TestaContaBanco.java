@@ -1,7 +1,5 @@
 
-package aula05;
-
-import aula04.ContaBanco;
+package AppBanco;
 
 public class TestaContaBanco {
     
