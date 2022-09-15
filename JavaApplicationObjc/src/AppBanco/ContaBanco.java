@@ -51,7 +51,7 @@ public class ContaBanco {
 
     @Override
     public String toString() {
-        return nome;
+        return this.NumConta + " - " + this.nome;
     }
 
     public void depositar(double valor) {
@@ -68,7 +68,7 @@ public class ContaBanco {
     }
 
     public boolean transferir(double valorTransferido, ContaBanco objContaDestino) {
-        if (this.saldoConta >= valorTransferido){
+        if ((this.saldoConta+this.limiteChuq) >= valorTransferido){
             this.saldoConta -= valorTransferido;
             objContaDestino.saldoConta += valorTransferido;
             return true;
