@@ -23,103 +23,88 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="cmbBox1" min="-2" pref="223" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Component id="lblNome1" alignment="0" min="-2" pref="220" max="-2" attributes="0"/>
+                          <Component id="lblSaldoConta1" min="-2" pref="229" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="lblNumConta1" alignment="1" min="-2" pref="229" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblNome1" max="32767" attributes="0"/>
-                              <Component id="lblSaldoConta1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblCheqLimit1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblNumConta1" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="2" groupAlignment="2" attributes="0">
-                                  <Component id="btnTrasnferir1" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="txtField1" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="btnSacar1" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="btnDepositar1" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="cmbBox1" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" alignment="2" groupAlignment="2" attributes="0">
+                          <Component id="btnTrasnferir1" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtField1" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="btnSacar1" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lblSaldoConta2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblNumConta2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="lblCheqLimit2" alignment="0" min="-2" pref="250" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="lblNome2" min="-2" pref="250" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="2" groupAlignment="2" attributes="0">
-                                  <Component id="btnTrasnferir2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="txtField2" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="btnSacar2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="2" groupAlignment="2" attributes="0">
-                                  <Component id="btnDepositar2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="cmbBox2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                      <Component id="btnDepositar1" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="lblCheqLimit1" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="2" groupAlignment="2" attributes="0">
+                          <Component id="btnTrasnferir2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="txtField2" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                          <Component id="btnSacar2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="btnDepositar2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
+                      <Component id="cmbBox2" alignment="2" min="-2" pref="223" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="lblNome2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblNumConta2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblSaldoConta2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="lblCheqLimit2" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="jLabel1" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="148" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jLabel1" pref="108" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblNome2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="lblNumConta2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lblSaldoConta2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblCheqLimit2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCheqLimit1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="lblNome1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblNumConta1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblSaldoConta1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblCheqLimit1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                      <Component id="lblNome2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Component id="lblNumConta2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblSaldoConta2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCheqLimit2" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="cmbBox1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnDepositar1" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnSacar1" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnTrasnferir1" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtField1" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <Component id="cmbBox2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDepositar2" min="-2" pref="30" max="-2" attributes="0"/>
@@ -129,6 +114,17 @@
                       <Component id="btnTrasnferir2" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtField2" min="-2" pref="30" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="cmbBox1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnDepositar1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnSacar1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnTrasnferir1" min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtField1" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
