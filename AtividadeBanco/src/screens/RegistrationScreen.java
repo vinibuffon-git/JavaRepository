@@ -6,6 +6,7 @@
 package screens;
 
 import tools.CaixaDeDialogo;
+import tools.Conexao;
 
 /**
  *
@@ -175,6 +176,9 @@ public class RegistrationScreen extends javax.swing.JFrame {
         if (cpfText.getText().equals("")){
             CaixaDeDialogo.obterinstancia().exibirMensagem("Por favor preencher"
                     + " o campo 'CPF'", 'i');
+        } else if (cpfText.getText().length() > 4){
+            CaixaDeDialogo.obterinstancia().exibirMensagem("CPF inválido."
+                    , 'i');
         }
         //Verifica se RG foi preenchido
         if (rgText.getText().equals("")){
