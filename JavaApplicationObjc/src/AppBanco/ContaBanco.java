@@ -1,4 +1,4 @@
-package aula04;
+package AppBanco;
 
 public class ContaBanco {
 
@@ -51,7 +51,7 @@ public class ContaBanco {
 
     @Override
     public String toString() {
-        return nome;
+        return this.NumConta + " - " + this.nome;
     }
 
     public void depositar(double valor) {
@@ -59,7 +59,7 @@ public class ContaBanco {
     }
 
     public boolean sacar(double valor) {
-        if (this.saldoConta >= valor) {
+        if ((this.saldoConta+this.limiteChuq) >= valor) {
             this.saldoConta -= valor;
             return true;
         }else{
@@ -68,7 +68,7 @@ public class ContaBanco {
     }
 
     public boolean transferir(double valorTransferido, ContaBanco objContaDestino) {
-        if (this.saldoConta >= valorTransferido){
+        if ((this.saldoConta+this.limiteChuq) >= valorTransferido){
             this.saldoConta -= valorTransferido;
             objContaDestino.saldoConta += valorTransferido;
             return true;
