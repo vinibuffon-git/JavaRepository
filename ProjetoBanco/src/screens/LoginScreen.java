@@ -57,8 +57,8 @@ public class LoginScreen extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(userText, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(passText, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                            .addComponent(userText, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(passText, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(butEntrar)))
@@ -97,6 +97,7 @@ public class LoginScreen extends javax.swing.JFrame {
         if (existe) {
             MenuScreen telas = new MenuScreen();
             telas.setVisible(true);
+            dispose();
         } else {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário não "
                     + "cadastrado", 'e');

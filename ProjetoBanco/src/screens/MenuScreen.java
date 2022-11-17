@@ -9,7 +9,10 @@ public class MenuScreen extends javax.swing.JFrame {
 
     
     public MenuScreen() {
-        initComponents();        
+        initComponents();
+        
+        this.setExtendedState(this.getExtendedState()|MenuScreen.MAXIMIZED_BOTH);
+        
     }
     
 
@@ -73,6 +76,8 @@ public class MenuScreen extends javax.swing.JFrame {
 
     private void menUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menUsuariosActionPerformed
         // TODO add your handling code here:
+        RegisScreen telas = new RegisScreen();
+        telas.setVisible(true);
     }//GEN-LAST:event_menUsuariosActionPerformed
 
 
