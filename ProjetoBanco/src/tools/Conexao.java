@@ -9,10 +9,6 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author jonas
- */
 public class Conexao {
     
     private final static String DRIVER = "org.postgresql.Driver";

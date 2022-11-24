@@ -1,18 +1,8 @@
-/*
- * Dialog.java
- *
- * Created on 13 de Outubro de 2006, 15:39
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
- */
 
 package tools;
+
 import javax.swing.JOptionPane;
-/**
- *
- * @author Mouriac
- */
+
 public class CaixaDeDialogo {
     
     final public static char ERRO = 'e';
@@ -40,23 +30,9 @@ public class CaixaDeDialogo {
     }
     
     public void exibirMensagem(String frase, String boxFrase, char tipo) {
-        /* Erro 'e'
-         * Informativa 'i'
-         * Advertência 'a'
-         * Pergunta 'p'
-         */
-        //JOptionPane.showMessageDialog(null,"Está conectado","Mensagem",JOptionPane.WARNING_MESSAGE);
-        String iconTypes = "eiap";
+                String iconTypes = "eiap";
         JOptionPane.showMessageDialog(null, frase, boxFrase, iconTypes.indexOf(tipo) );
     }
-    
-//    public boolean pedirConfirmacao( String frase ) {
-//        return( pedirConfirmacao( frase, "Confirmacao", 'p' ));
-//    }
-//
-//    public boolean pedirConfirmacao( String frase, char tipo ) {
-//        return( pedirConfirmacao( frase, "Confirmacao", tipo ));
-//    }
         
     public boolean pedirConfirmacao( String frase, String boxFrase, char tipo ) {
         String[] opcoes = { "Sim", "Não" };
