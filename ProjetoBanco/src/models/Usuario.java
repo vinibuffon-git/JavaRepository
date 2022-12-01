@@ -1,12 +1,13 @@
-
 package models;
 
 public class Usuario {
+
     private int id;
     private String nome;
     private String user;
     private String pass;
     private String telefone;
+    private String email;
 
     public int getId() {
         return id;
@@ -46,5 +47,13 @@ public class Usuario {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

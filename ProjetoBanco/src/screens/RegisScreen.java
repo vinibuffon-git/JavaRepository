@@ -20,6 +20,65 @@ public class RegisScreen extends javax.swing.JFrame {
         controller.preencherLista(tblUsers);
     }
 
+    private void preencherCampos() {
+        try {
+
+            jlbID.setText(String.valueOf(objUsuario.getId()));
+            txtNome.setText(objUsuario.getNome());
+            txtLogin.setText(objUsuario.getUser());
+            txtNumCel.setText(objUsuario.getTelefone());
+            txtEmail.setText(objUsuario.getEmail());
+
+            btnAdicionar.setEnabled(false);
+            btnAlterar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+            txtLogin.setEnabled(false);
+            txtLogin.setEditable(false);
+
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());
+        }
+    }
+
+    private void limparCampos() {
+        try {
+
+            jlbID.setText("ID");
+            txtNome.setText("");
+            txtLogin.setText("");
+            txtNumCel.setText("");
+            txtSenha.setText("");
+            txtConfSenha.setText("");
+            txtEmail.setText("");
+
+            btnAdicionar.setEnabled(true);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+            txtLogin.setEnabled(true);
+            txtLogin.setEditable(true);
+
+            atualizaLista();
+
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());
+        }
+    }
+
+    private void guardarDados() {
+        try {
+
+            objUsuario = new Usuario();
+            objUsuario.setNome(txtNome.getText());
+            objUsuario.setTelefone(txtNumCel.getText());
+            objUsuario.setUser(txtLogin.getText());
+            objUsuario.setPass(txtSenha.getText());
+            objUsuario.setEmail(txtEmail.getText());
+
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,19 +92,21 @@ public class RegisScreen extends javax.swing.JFrame {
         txtLogin = new javax.swing.JTextField();
         txtNumCel = new javax.swing.JTextField();
         txtSenha = new javax.swing.JPasswordField();
-        Salvar = new javax.swing.JButton();
-        Cancelar = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         txtConfSenha = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jlbNome = new javax.swing.JLabel();
+        jlbUser = new javax.swing.JLabel();
+        jlbSenha = new javax.swing.JLabel();
+        jlbSenhaRepete = new javax.swing.JLabel();
+        jlbNumCel = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblUsers = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        txtId = new javax.swing.JLabel();
+        btnLimpas = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        jlbID = new javax.swing.JLabel();
+        jlbEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -91,17 +152,17 @@ public class RegisScreen extends javax.swing.JFrame {
             }
         });
 
-        Salvar.setText("Adicionar");
-        Salvar.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalvarActionPerformed(evt);
+                btnAdicionarActionPerformed(evt);
             }
         });
 
-        Cancelar.setText("Excluir");
-        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -111,15 +172,15 @@ public class RegisScreen extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Nome:");
+        jlbNome.setText("Nome:");
 
-        jLabel3.setText("Usuário:");
+        jlbUser.setText("Usuário:");
 
-        jLabel4.setText("Senha:");
+        jlbSenha.setText("Senha:");
 
-        jLabel5.setText("Repetir senha:");
+        jlbSenhaRepete.setText("Repetir senha:");
 
-        jLabel6.setText("Celular:");
+        jlbNumCel.setText("Celular:");
 
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,21 +200,23 @@ public class RegisScreen extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblUsers);
 
-        jButton1.setText("Limpar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpas.setText("Limpar");
+        btnLimpas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLimpasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Alterar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
 
-        txtId.setText("ID");
+        jlbID.setText("ID");
+
+        jlbEmail.setText("Email:");
 
         jMenu1.setText("Voltar");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -172,45 +235,45 @@ public class RegisScreen extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNome)
-                                    .addComponent(txtLogin)
-                                    .addComponent(txtSenha)
-                                    .addComponent(txtNumCel)
-                                    .addComponent(txtConfSenha)))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(39, 39, 39)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(Cancelar)
-                                .addGap(6, 6, 6)
-                                .addComponent(jButton1)
-                                .addGap(6, 6, 6)
-                                .addComponent(jButton2)
-                                .addGap(6, 6, 6)
-                                .addComponent(Salvar)))))
-                .addGap(6, 6, 6))
+                                    .addComponent(jlbNumCel)
+                                    .addComponent(jlbSenhaRepete)
+                                    .addComponent(jlbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlbNome)
+                                    .addComponent(jlbUser)
+                                    .addComponent(jlbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtNumCel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpas)
+                                .addGap(12, 12, 12)
+                                .addComponent(btnAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                                .addComponent(btnAdicionar))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlbID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -218,37 +281,40 @@ public class RegisScreen extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(jLabel1)
                 .addGap(2, 2, 2)
-                .addComponent(txtId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel3)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel4)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel5)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtNumCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(9, 9, 9)
+                .addComponent(jlbID)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbNome))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbUser))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbSenha))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbSenhaRepete))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNumCel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbNumCel))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbEmail))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Cancelar)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(Salvar))
+                    .addComponent(btnExcluir)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnAdicionar)
+                        .addComponent(btnAlterar)
+                        .addComponent(btnLimpas)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -264,9 +330,22 @@ public class RegisScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CancelarActionPerformed
+        try {
+            boolean wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir este usuário²", "Confirmação", 'p');
+
+            if (wPergunta) {
+                controller = new UsuarioController();
+                boolean retorno = controller.excluir(Integer.parseInt(jlbID.getText()));
+                if (retorno) {
+                    limparCampos();
+                } else {
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
@@ -276,24 +355,18 @@ public class RegisScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSenhaActionPerformed
 
-    private void SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarActionPerformed
-
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         try {
             //salvar o usuário no banco de dados
 
             //1 - validar os dados
-            if (validarDados() == true) {
+            if (validarDados()) {
 
-                //2 - criar um objeto do tipo usuário preenchido
-                objUsuario = new Usuario();
-                objUsuario.setNome(txtNome.getText());
-                objUsuario.setUser(txtLogin.getText());
-                objUsuario.setTelefone(txtNumCel.getText());
-                objUsuario.setPass(txtSenha.getText());
+                guardarDados();
 
                 //3 - chamar o método de incluir do controller (passando o objeto criado)
                 controller = new UsuarioController();
-                if (controller.verificaExist(objUsuario.getUser())) {
+                if (controller.verificaExistencia(objUsuario)) {
                     CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário já cadastrado!", 'a');
                 } else {
                     boolean retorno = controller.incluir(objUsuario);
@@ -306,13 +379,11 @@ public class RegisScreen extends javax.swing.JFrame {
                         CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao incluir usuário");
                     }
                 }
-
             }
-
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("ERRO: " + ex.getMessage());
         }
-    }//GEN-LAST:event_SalvarActionPerformed
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private boolean validarDados() {
 
@@ -321,6 +392,9 @@ public class RegisScreen extends javax.swing.JFrame {
             return false;
         } else if (txtNumCel.getText().equals("")) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o telefone do usuário", 'e');
+            return false;
+        } else if (txtEmail.getText().equals("")) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Email do usuário", 'e');
             return false;
         } else if (txtLogin.getText().equals("")) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o login do usuário", 'e');
@@ -340,48 +414,57 @@ public class RegisScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtConfSenhaActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        try {
+            if (validarDados()) {
+
+                guardarDados();
+                objUsuario.setId(Integer.parseInt(jlbID.getText()));
+
+                //verificar se o usuário já existe
+                controller = new UsuarioController();
+                if (controller.verificaExistencia(objUsuario)) {
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário já existe!", 'e');
+                } else {
+                    if (controller.alterar(objUsuario) == true) {
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Usuário alterado com Sucesso (" + objUsuario.getId() + ")!");
+                    } else {
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar usuário!", 'e');
+                    }
+                }
+                limparCampos();
+            }
+        } catch (Exception ex) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Erro: " + ex.getMessage());
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void tblUsersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsersMouseClicked
         // TODO add your handling code here:
-
         try {
-
             int linhaSelecionada = tblUsers.getSelectedRow();//pega a linha selecionada
             String idUsuario = tblUsers.getModel()
                     .getValueAt(linhaSelecionada, 0).toString(); // Primeira coluna da linha
 
             //if(jtbUsuarios.isColumnSelected(2)){
-            UsuarioController objUsuarioController = new UsuarioController();
+            controller = new UsuarioController();
 
-            Usuario objUsuario = objUsuarioController.buscar(Integer.parseInt(idUsuario));
+            objUsuario = controller.buscar(Integer.parseInt(idUsuario));
             if (objUsuario != null && objUsuario.getId() > 0) {
-                txtId.setText(String.valueOf(objUsuario.getId()));
-                txtNome.setText(objUsuario.getNome());
-                txtLogin.setText(objUsuario.getUser());
-                txtNumCel.setText(objUsuario.getTelefone());
+                preencherCampos();
             } else {
                 CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Usuário no BD!");
             }
             //}
-
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(), 'e');
         }
-
     }//GEN-LAST:event_tblUsersMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLimpasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpasActionPerformed
         // TODO add your handling code here:
-        txtId.setText("ID");
-        txtNome.setText("");
-        txtLogin.setText("");
-        txtSenha.setText("");
-        txtConfSenha.setText("");
-        txtNumCel.setText("");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_btnLimpasActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -392,16 +475,11 @@ public class RegisScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Cancelar;
-    private javax.swing.JButton Salvar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnLimpas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -410,9 +488,16 @@ public class RegisScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jlbEmail;
+    private javax.swing.JLabel jlbID;
+    private javax.swing.JLabel jlbNome;
+    private javax.swing.JLabel jlbNumCel;
+    private javax.swing.JLabel jlbSenha;
+    private javax.swing.JLabel jlbSenhaRepete;
+    private javax.swing.JLabel jlbUser;
     private javax.swing.JTable tblUsers;
     private javax.swing.JPasswordField txtConfSenha;
-    private javax.swing.JLabel txtId;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumCel;
