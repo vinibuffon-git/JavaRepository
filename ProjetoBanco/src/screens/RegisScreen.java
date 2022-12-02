@@ -11,7 +11,6 @@ public class RegisScreen extends javax.swing.JFrame {
 
     public RegisScreen() {
         initComponents();
-
         atualizaLista();
     }
 

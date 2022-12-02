@@ -11,7 +11,7 @@ public class MenuScreen extends javax.swing.JFrame {
     public MenuScreen() {
         initComponents();
         
-        this.setExtendedState(this.getExtendedState()|MenuScreen.MAXIMIZED_BOTH);
+       // this.setExtendedState(this.getExtendedState()|MenuScreen.MAXIMIZED_BOTH);
         
     }
     
@@ -22,18 +22,24 @@ public class MenuScreen extends javax.swing.JFrame {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menUsuarios = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        menJogos = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        menSair = new javax.swing.JMenuItem();
 
         jFormattedTextField1.setText("jFormattedTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Menu");
+        jLabel1.setText("Locadora de Jogos");
+
+        jLabel2.setFont(new java.awt.Font("Niagara Engraved", 1, 48)); // NOI18N
+        jLabel2.setText("Fireball");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jMenu1.setText("Cadastros");
 
@@ -45,13 +51,27 @@ public class MenuScreen extends javax.swing.JFrame {
         });
         jMenu1.add(menUsuarios);
 
+        menJogos.setText("Jogos");
+        menJogos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menJogosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menJogos);
+
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenu4.setText("Help");
 
-        jMenu3.setText("Sair");
-        jMenuBar1.add(jMenu3);
+        menSair.setText("Sair");
+        menSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menSairActionPerformed(evt);
+            }
+        });
+        jMenu4.add(menSair);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -61,14 +81,20 @@ public class MenuScreen extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 100, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addGap(0, 258, Short.MAX_VALUE))
+                .addGap(0, 200, Short.MAX_VALUE))
         );
 
         pack();
@@ -80,10 +106,19 @@ public class MenuScreen extends javax.swing.JFrame {
         telas.setVisible(true);
     }//GEN-LAST:event_menUsuariosActionPerformed
 
+    private void menJogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menJogosActionPerformed
+        // TODO add your handling code here:
+        GamesScreen telas = new GamesScreen();
+        telas.setVisible(true);
+    }//GEN-LAST:event_menJogosActionPerformed
+
+    private void menSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_menSairActionPerformed
+
 
     public static void main(String args[]) {
-        
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuScreen().setVisible(true);
@@ -94,10 +129,12 @@ public class MenuScreen extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem menJogos;
+    private javax.swing.JMenuItem menSair;
     private javax.swing.JMenuItem menUsuarios;
     // End of variables declaration//GEN-END:variables
 }

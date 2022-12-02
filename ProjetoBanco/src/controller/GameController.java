@@ -11,14 +11,105 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import models.Usuario;
+import models.Game;
 
 /**
  *
  * @author jonas
  */
-public class UsuarioController {
+public class GameController {
+    
+    /**
+     *
+     * @param jtbGame
+     */
+    public void preencherListaGames(JTable jtbGame) {
+            
+       System.out.print("Tabela Games Lancada! ");
+        
+        Vector<String> cabecalhos = new Vector<>();
+        Vector dadosTabela = new Vector();
+        cabecalhos.add("Id");
+        cabecalhos.add("Nome");
+        cabecalhos.add("Género");
+        cabecalhos.add("Data de Lançamento");
 
+        Conexao.abreConexao();
+        ResultSet result = null;
+
+        try {
+            String sql = "";
+            sql = "SELECT id, nome, genero, dtlancamento ";
+            sql += " FROM game ";
+            sql += " ORDER BY nome ";
+
+            result = Conexao.stmt.executeQuery(sql);
+
+            while (result.next()) {
+                Vector<Object> linha = new Vector<Object>();
+                linha.add(result.getInt("id"));
+                linha.add(result.getString("nome"));
+                linha.add(result.getString("genero"));
+                linha.add(result.getDate("dtlancamento"));
+
+                dadosTabela.add(linha);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Problemas para popular tabela...");
+            System.out.println(e);
+        }
+
+        jtbGame.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
+
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+
+        });
+
+        // permite seleção de apenas uma linha da tabela
+        jtbGame.setSelectionMode(0);
+
+        // redimensiona as colunas de uma tabela
+        TableColumn column = null;
+        for (int i = 0; i < 4; i++) {
+            column = jtbGame.getColumnModel().getColumn(i);
+            switch (i) {
+                case 0:
+                    column.setPreferredWidth(80);
+                    break;
+                case 1:
+                    column.setPreferredWidth(200);
+                    break;
+                case 2:
+                    column.setPreferredWidth(200);
+                    break;
+                case 3:
+                    column.setPreferredWidth(250);
+                    break;
+            }
+        }
+        jtbGame.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected,
+                        hasFocus, row, column);
+                if (row % 2 == 0) {
+                    setBackground(Color.LIGHT_GRAY);
+                } else {
+                    setBackground(Color.WHITE);
+                }
+                return this;
+            }
+        });
+        //return (true);
+    }
+
+    /*
     public boolean login(String user, String pass) {
         try {
             Conexao.abreConexao();
@@ -52,7 +143,7 @@ public class UsuarioController {
         }
 
     }
-
+    
     public Usuario buscar(int id) {
         try {
             Usuario objUsuario = null;
@@ -163,93 +254,7 @@ public class UsuarioController {
         }
 
     }
-
-    public void preencherLista(JTable jtbUsuarios) {
-        
-        System.out.println("Lista usuer lançada");
-
-        Vector<String> cabecalhos = new Vector<>();
-        Vector dadosTabela = new Vector();
-        cabecalhos.add("Id");
-        cabecalhos.add("Nome");
-        cabecalhos.add("Usuário");
-        cabecalhos.add("Email");
-
-        Conexao.abreConexao();
-        ResultSet result = null;
-
-        try {
-            String sql = "";
-            sql = "SELECT id, nome, login, email ";
-            sql += " FROM usuario ";
-            sql += " ORDER BY nome ";
-
-            result = Conexao.stmt.executeQuery(sql);
-
-            while (result.next()) {
-                Vector<Object> linha = new Vector<Object>();
-                linha.add(result.getInt("id"));
-                linha.add(result.getString("nome"));
-                linha.add(result.getString("login"));
-                linha.add(result.getString("email"));
-
-                dadosTabela.add(linha);
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Problemas para popular tabela...");
-            System.out.println(e);
-        }
-
-        jtbUsuarios.setModel(new DefaultTableModel(dadosTabela, cabecalhos) {
-
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-
-        });
-
-        // permite seleção de apenas uma linha da tabela
-        jtbUsuarios.setSelectionMode(0);
-
-        // redimensiona as colunas de uma tabela
-        TableColumn column = null;
-        for (int i = 0; i < 4; i++) {
-            column = jtbUsuarios.getColumnModel().getColumn(i);
-            switch (i) {
-                case 0:
-                    column.setPreferredWidth(80);
-                    break;
-                case 1:
-                    column.setPreferredWidth(180);
-                    break;
-                case 2:
-                    column.setPreferredWidth(150);
-                    break;
-                case 3:
-                    column.setPreferredWidth(150);
-                    break;
-            }
-        }
-        jtbUsuarios.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value,
-                    boolean isSelected, boolean hasFocus, int row, int column) {
-                super.getTableCellRendererComponent(table, value, isSelected,
-                        hasFocus, row, column);
-                if (row % 2 == 0) {
-                    setBackground(Color.LIGHT_GRAY);
-                } else {
-                    setBackground(Color.WHITE);
-                }
-                return this;
-            }
-        });
-        //return (true);
-    }
-
+     
     public boolean alterar(Usuario objUsuario) {
 
         Conexao.abreConexao();
@@ -298,4 +303,5 @@ public class UsuarioController {
         }
 
     }
+     */
 }
