@@ -13,33 +13,26 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import models.Game;
 
-/**
- *
- * @author jonas
- */
+
 public class GameController {
+
     
-    /**
-     *
-     * @param jtbGame
-     */
     public void preencherListaGames(JTable jtbGame) {
-            
-       System.out.print("Tabela Games Lancada! ");
-        
+
+        System.out.print("Tabela Games Lancada! ");
+
         Vector<String> cabecalhos = new Vector<>();
         Vector dadosTabela = new Vector();
         cabecalhos.add("Id");
         cabecalhos.add("Nome");
         cabecalhos.add("Género");
-        cabecalhos.add("Data de Lançamento");
 
         Conexao.abreConexao();
         ResultSet result = null;
 
         try {
             String sql = "";
-            sql = "SELECT id, nome, genero, dtlancamento ";
+            sql = "SELECT id, nome, genero ";
             sql += " FROM game ";
             sql += " ORDER BY nome ";
 
@@ -50,8 +43,6 @@ public class GameController {
                 linha.add(result.getInt("id"));
                 linha.add(result.getString("nome"));
                 linha.add(result.getString("genero"));
-                linha.add(result.getDate("dtlancamento"));
-
                 dadosTabela.add(linha);
             }
 
@@ -74,20 +65,17 @@ public class GameController {
 
         // redimensiona as colunas de uma tabela
         TableColumn column = null;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             column = jtbGame.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
                     column.setPreferredWidth(80);
                     break;
                 case 1:
-                    column.setPreferredWidth(200);
+                    column.setPreferredWidth(300);
                     break;
                 case 2:
                     column.setPreferredWidth(200);
-                    break;
-                case 3:
-                    column.setPreferredWidth(250);
                     break;
             }
         }
@@ -109,44 +97,9 @@ public class GameController {
         //return (true);
     }
 
-    /*
-    public boolean login(String user, String pass) {
+    public Game buscarGame(int id) {
         try {
-            Conexao.abreConexao();
-            ResultSet rs = null;
-            PreparedStatement stmt;
-
-            String wSql = "";
-            wSql = " SELECT nome ";
-            wSql += " FROM usuario ";
-            wSql += " WHERE login = ? ";
-            wSql += " AND senha = md5(md5(?)) ";
-
-            try {
-                System.out.println("Vai Executar Conexão em buscar Usuario");
-                stmt = Conexao.con.prepareStatement(wSql);
-                stmt.setString(1, user);
-                stmt.setString(2, pass);
-
-                rs = stmt.executeQuery();
-
-                return rs.next();
-
-            } catch (SQLException ex) {
-                System.out.println("ERRO de SQL: " + ex.getMessage().toString());
-                return false;
-            }
-
-        } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage().toString());
-            return false;
-        }
-
-    }
-    
-    public Usuario buscar(int id) {
-        try {
-            Usuario objUsuario = null;
+            Game objGame = null;
 
             Conexao.abreConexao();
             ResultSet rs = null;
@@ -154,60 +107,53 @@ public class GameController {
 
             String wSql = "";
             wSql = " SELECT * ";
-            wSql += " FROM usuario ";
+            wSql += " FROM game ";
             wSql += " WHERE id = ? ";
 
             try {
-                System.out.println("Vai Executar Conexão em buscar Usuario");
+                System.out.println("Vai Executar Conexão em buscar Game");
                 stmt = Conexao.con.prepareStatement(wSql);
                 stmt.setInt(1, id);
 
                 rs = stmt.executeQuery();
 
                 if (rs.next()) {
-                    objUsuario = new Usuario();
-                    objUsuario.setId(rs.getInt("id"));
-                    objUsuario.setNome(rs.getString("nome"));
-                    objUsuario.setTelefone(rs.getString("telefone"));
-                    objUsuario.setEmail(rs.getString("email"));
-                    objUsuario.setUser(rs.getString("login"));
-                    objUsuario.setPass(rs.getString("senha"));
-
-                    return objUsuario;
+                    objGame = new Game();
+                    objGame.setId(rs.getInt("id"));
+                    objGame.setNome(rs.getString("nome"));
+                    objGame.setGenero(rs.getString("genero"));
+                    //objGame.setDtlacamento(rs.getString("data"));
+                    return objGame;
                 }
-
             } catch (SQLException ex) {
-                System.out.println("ERRO de SQL: " + ex.getMessage().toString());
+                System.out.println("ERRO de SQL: " + ex.getMessage());
                 return null;
             }
-
         } catch (Exception e) {
-            System.out.println("ERRO: " + e.getMessage().toString());
+            System.out.println("ERRO: " + e.getMessage());
             return null;
         }
-
         return null;
-
     }
-
-    public boolean verificaExistencia(Usuario objUsuario) {
+    
+    public boolean verificaExistenciaGame(Game objGame) {
         try {
             Conexao.abreConexao();
             ResultSet rs = null;
             PreparedStatement stmt;
 
             String wSql = " SELECT * ";
-            wSql += " FROM usuario ";
-            wSql += " WHERE login = ? ";
-            if (objUsuario.getId() > 0) {
+            wSql += " FROM game ";
+            wSql += " WHERE nome = ? ";
+            if (objGame.getId() > 0) {
                 wSql += " AND id <> ? ";
             }
 
-            System.out.println("Vai Executar Conexão em verificaExistencia Usuario");
+            System.out.println("Vai Executar Conexão em verificaExistenciaGame");
             stmt = Conexao.con.prepareStatement(wSql);
-            stmt.setString(1, objUsuario.getUser());
-            if (objUsuario.getId() > 0) {
-                stmt.setInt(2, objUsuario.getId());
+            stmt.setString(1, objGame.getNome());
+            if (objGame.getId() > 0) {
+                stmt.setInt(2, objGame.getId());
             }
 
             rs = stmt.executeQuery();
@@ -227,21 +173,17 @@ public class GameController {
         return false;
 
     }
-
-    public boolean incluir(Usuario objUsuario) {
+    
+    public boolean incluirGame(Game objGame) {
 
         try {
 
             Conexao.abreConexao();
             PreparedStatement stmt = null;
 
-            stmt = Conexao.con.prepareStatement("INSERT INTO usuario (nome, login, senha, telefone, email) VALUES(?,?,md5(md5(?)),?,?)");
-            stmt.setString(1, objUsuario.getNome());
-            stmt.setString(2, objUsuario.getUser());
-            stmt.setString(3, objUsuario.getPass());
-            stmt.setString(4, objUsuario.getTelefone());
-            stmt.setString(5, objUsuario.getEmail());
-
+            stmt = Conexao.con.prepareStatement("INSERT INTO Game (nome, genero) VALUES(?,?)");
+            stmt.setString(1, objGame.getNome());
+            stmt.setString(2, objGame.getGenero());
             stmt.executeUpdate();
 
             return true;
@@ -255,20 +197,17 @@ public class GameController {
 
     }
      
-    public boolean alterar(Usuario objUsuario) {
+    
+    public boolean alterarGame(Game objGame) {
 
         Conexao.abreConexao();
         PreparedStatement stmt = null;
 
         try {
-            stmt = Conexao.con.prepareStatement("UPDATE usuario SET nome=?, login=?, senha=md5(md5(?)), telefone=?, email=? WHERE id=? ");
-            stmt.setString(1, objUsuario.getNome());
-            stmt.setString(2, objUsuario.getUser());
-            stmt.setString(3, objUsuario.getPass());
-            stmt.setString(4, objUsuario.getTelefone());
-            stmt.setString(5, objUsuario.getEmail());
-            stmt.setInt(6, objUsuario.getId());
-
+            stmt = Conexao.con.prepareStatement("UPDATE game SET nome=?, genero=? WHERE id=? ");
+            stmt.setString(1, objGame.getNome());
+            stmt.setString(2, objGame.getGenero());
+            stmt.setInt(3, objGame.getId());
             stmt.executeUpdate();
 
             return true;
@@ -281,14 +220,14 @@ public class GameController {
         }
 
     }
-
-    public boolean excluir(int id) {
+    
+    public boolean excluirGame(int id) {
 
         Conexao.abreConexao();
         PreparedStatement stmt = null;
 
         try {
-            stmt = Conexao.con.prepareStatement("DELETE FROM usuario WHERE id=?");
+            stmt = Conexao.con.prepareStatement("DELETE FROM game WHERE id=?");
             stmt.setInt(1, id);//1º?
 
             stmt.executeUpdate();
@@ -303,5 +242,4 @@ public class GameController {
         }
 
     }
-     */
 }

@@ -108,7 +108,7 @@ public class MenuScreen extends javax.swing.JFrame {
 
     private void menJogosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menJogosActionPerformed
         // TODO add your handling code here:
-        GamesScreen telas = new GamesScreen();
+        GameScreen telas = new GameScreen();
         telas.setVisible(true);
     }//GEN-LAST:event_menJogosActionPerformed
 

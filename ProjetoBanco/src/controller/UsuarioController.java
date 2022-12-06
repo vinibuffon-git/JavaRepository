@@ -13,10 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import models.Usuario;
 
-/**
- *
- * @author jonas
- */
 public class UsuarioController {
 
     public boolean login(String user, String pass) {
