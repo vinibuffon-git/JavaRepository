@@ -1,31 +1,32 @@
 package screens;
 
-import controller.GameController;
-import models.Game;
+import controller.MovieController;
+import models.Movie;
 import tools.CaixaDeDialogo;
 
-public class GameScreen extends javax.swing.JFrame {
+public class MoviesScreen extends javax.swing.JFrame {
 
-    Game objGame;
-    GameController gamecontroller;
+    Movie objMovie;
+    MovieController moviecontroller;
 
-    public GameScreen() {
+    public MoviesScreen() {
         initComponents();
         atualizaLista();
     }
 
     private void atualizaLista() {
-        gamecontroller = new GameController();
-        gamecontroller.preencherListaGames(tblGames);
+        moviecontroller = new MovieController();
+        moviecontroller.preencherListaMovies(tblMovies);
     }
 
     private void preencherCampos() {
         try {
 
-            jlbID.setText(String.valueOf(objGame.getId()));
-            txtNome.setText(objGame.getNome());
-            txtGenero.setText(objGame.getGenero());
-            
+            jlbID.setText(String.valueOf(objMovie.getId()));
+            txtNome.setText(objMovie.getNome());
+            txtGenero.setText(objMovie.getGenero());
+            txtDiretor.setText(objMovie.getDiretor());
+            txtResumo.setText(objMovie.getResumo());
 
             btnAdicionar.setEnabled(false);
             btnAlterar.setEnabled(true);
@@ -42,7 +43,9 @@ public class GameScreen extends javax.swing.JFrame {
             jlbID.setText("ID");
             txtNome.setText("");
             txtGenero.setText("");
-           
+            txtDiretor.setText("");
+            txtResumo.setText("");
+
             btnAdicionar.setEnabled(true);
             btnAlterar.setEnabled(false);
             btnExcluir.setEnabled(false);
@@ -57,10 +60,12 @@ public class GameScreen extends javax.swing.JFrame {
     private void guardarDados() {
         try {
 
-            objGame = new Game();
-            objGame.setNome(txtNome.getText());
-            objGame.setGenero(txtGenero.getText());
-          
+            objMovie = new Movie();
+            objMovie.setNome(txtNome.getText());
+            objMovie.setGenero(txtGenero.getText());
+            objMovie.setDiretor(txtDiretor.getText());
+            objMovie.setResumo(txtResumo.getText());
+
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage());
         }
@@ -79,13 +84,18 @@ public class GameScreen extends javax.swing.JFrame {
         btnAdicionar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jlbNome = new javax.swing.JLabel();
-        jlbUser = new javax.swing.JLabel();
+        jlbGenero = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblGames = new javax.swing.JTable();
+        tblMovies = new javax.swing.JTable();
         btnLimpas = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         jlbID = new javax.swing.JLabel();
         txtGenero = new javax.swing.JTextField();
+        txtDiretor = new javax.swing.JTextField();
+        jlbDiretor = new javax.swing.JLabel();
+        jlbResumo = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        txtResumo = new javax.swing.JTextArea();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -108,7 +118,7 @@ public class GameScreen extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Catálogo de jogos:");
+        jLabel1.setText("Catálogo de Filmes:");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,9 +142,9 @@ public class GameScreen extends javax.swing.JFrame {
 
         jlbNome.setText("Nome:");
 
-        jlbUser.setText("Genéro:");
+        jlbGenero.setText("Genéro:");
 
-        tblGames.setModel(new javax.swing.table.DefaultTableModel(
+        tblMovies.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -145,12 +155,12 @@ public class GameScreen extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblGames.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblMovies.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblGamesMouseClicked(evt);
+                tblMoviesMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tblGames);
+        jScrollPane3.setViewportView(tblMovies);
 
         btnLimpas.setText("Limpar");
         btnLimpas.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +184,21 @@ public class GameScreen extends javax.swing.JFrame {
             }
         });
 
+        txtDiretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDiretorActionPerformed(evt);
+            }
+        });
+
+        jlbDiretor.setText("Diretor:");
+
+        jlbResumo.setText("Resumo");
+
+        txtResumo.setColumns(20);
+        txtResumo.setLineWrap(true);
+        txtResumo.setRows(5);
+        jScrollPane4.setViewportView(txtResumo);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,28 +212,30 @@ public class GameScreen extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jlbNome)
-                                            .addComponent(jlbUser))
-                                        .addGap(28, 28, 28)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(31, 31, 31)
-                                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnAdicionar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnAlterar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnLimpas)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(btnExcluir)))
+                                    .addComponent(jlbNome)
+                                    .addComponent(jlbGenero))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtGenero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jlbID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAdicionar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnLimpas)
+                                .addGap(12, 12, 12)
+                                .addComponent(btnExcluir)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jlbID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlbDiretor)
+                                    .addComponent(jlbResumo))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDiretor, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane4))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -224,9 +251,17 @@ public class GameScreen extends javax.swing.JFrame {
                     .addComponent(jlbNome))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlbUser)
+                    .addComponent(jlbGenero)
                     .addComponent(txtGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlbDiretor)
+                    .addComponent(txtDiretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlbResumo)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnExcluir)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -248,11 +283,11 @@ public class GameScreen extends javax.swing.JFrame {
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         // TODO add your handling code here:
         try {
-            boolean wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir este jogo?", "Confirmação", 'p');
+            boolean wPergunta = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Tem certeza de que deseja excluir este filme?", "Confirmação", 'p');
 
             if (wPergunta) {
-                gamecontroller = new GameController();
-                boolean retorno = gamecontroller.excluirGame(Integer.parseInt(jlbID.getText()));
+                moviecontroller = new MovieController();
+                boolean retorno = moviecontroller.excluirMovie(Integer.parseInt(jlbID.getText()));
                 if (retorno) {
                     limparCampos();
                 } else {
@@ -272,18 +307,18 @@ public class GameScreen extends javax.swing.JFrame {
                 guardarDados();
 
                 //3 - chamar o método de incluir do controller (passando o objeto criado)
-                gamecontroller = new GameController();
-                if (gamecontroller.verificaExistenciaGame(objGame)) {
-                    CaixaDeDialogo.obterinstancia().exibirMensagem("Jogo já cadastrado!", 'a');
+                moviecontroller = new MovieController();
+                if (moviecontroller.verificaExistenciaMovie(objMovie)) {
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Filme já cadastrado!", 'a');
                 } else {
-                    boolean retorno = gamecontroller.incluirGame(objGame);
+                    boolean retorno = moviecontroller.incluirMovie(objMovie);
                     atualizaLista();
 
                     //4 - avisar o usuário se a inclusão deu certo ou deu errado
                     if (retorno == true) {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Jogo incluído com sucesso");
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Filme incluído com sucesso");
                     } else {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao incluir Jogo");
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao incluir Filme");
                     }
                 }
             }
@@ -295,11 +330,21 @@ public class GameScreen extends javax.swing.JFrame {
     private boolean validarDados() {
 
         if (txtNome.getText().equals("")) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o nome do Jogo", 'e');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o nome do Filme", 'e');
             return false;
         } else if (txtGenero.getText().equals("")) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Genéro do Jogo", 'e');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Genéro do Filme", 'e');
             return false;
+        } else if (txtDiretor.getText().equals("")) {
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Diretor do Filme", 'e');
+            return false;
+        } else if (txtResumo.getText().equals("")) {
+            boolean confirmacao = CaixaDeDialogo.obterinstancia().pedirConfirmacao("Deseja deixar este filme sem resumo?", "Resumo", 'p');
+            if (confirmacao) {
+                return true;
+            } else {
+                return false;
+            }
         }
         return true;
     }
@@ -309,17 +354,15 @@ public class GameScreen extends javax.swing.JFrame {
             if (validarDados()) {
 
                 guardarDados();
-                objGame.setId(Integer.parseInt(jlbID.getText()));
-
-                //verificar se o usuário já existe
-                gamecontroller = new GameController();
-                if (gamecontroller.verificaExistenciaGame(objGame)) {
-                    CaixaDeDialogo.obterinstancia().exibirMensagem("Jogo já existe!", 'e');
+                objMovie.setId(Integer.parseInt(jlbID.getText()));
+                moviecontroller = new MovieController();
+                if (moviecontroller.verificaExistenciaMovie(objMovie)) {
+                    CaixaDeDialogo.obterinstancia().exibirMensagem("Filme já existe!", 'e');
                 } else {
-                    if (gamecontroller.alterarGame(objGame) == true) {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Jogo alterado com Sucesso (" + objGame.getId() + ")!");
+                    if (moviecontroller.alterarMovie(objMovie) == true) {
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Filme alterado com Sucesso (" + objMovie.getId() + ")!");
                     } else {
-                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar Jogo!", 'e');
+                        CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao alterar Filme!", 'e');
                     }
                 }
                 limparCampos();
@@ -329,27 +372,27 @@ public class GameScreen extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
-    private void tblGamesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGamesMouseClicked
+    private void tblMoviesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMoviesMouseClicked
         // TODO add your handling code here:
         try {
-            int linhaSelecionada = tblGames.getSelectedRow();//pega a linha selecionada
-            String idUsuario = tblGames.getModel()
+            int linhaSelecionada = tblMovies.getSelectedRow();//pega a linha selecionada
+            String idUsuario = tblMovies.getModel()
                     .getValueAt(linhaSelecionada, 0).toString(); // Primeira coluna da linha
 
             //if(jtbUsuarios.isColumnSelected(2)){
-            gamecontroller = new GameController();
+            moviecontroller = new MovieController();
 
-            objGame = gamecontroller.buscarGame(Integer.parseInt(idUsuario));
-            if (objGame != null && objGame.getId() > 0) {
+            objMovie = moviecontroller.buscarMovie(Integer.parseInt(idUsuario));
+            if (objMovie != null && objMovie.getId() > 0) {
                 preencherCampos();
             } else {
-                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Jogo no BD!");
+                CaixaDeDialogo.obterinstancia().exibirMensagem("Erro ao buscar Filme no BD!");
             }
             //}
         } catch (Exception ex) {
             CaixaDeDialogo.obterinstancia().exibirMensagem(ex.getMessage(), 'e');
         }
-    }//GEN-LAST:event_tblGamesMouseClicked
+    }//GEN-LAST:event_tblMoviesMouseClicked
 
     private void btnLimpasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpasActionPerformed
         // TODO add your handling code here:
@@ -360,10 +403,14 @@ public class GameScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtGeneroActionPerformed
 
+    private void txtDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiretorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDiretorActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GameScreen().setVisible(true);
+                new MoviesScreen().setVisible(true);
             }
         });
     }
@@ -377,13 +424,18 @@ public class GameScreen extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jlbDiretor;
+    private javax.swing.JLabel jlbGenero;
     private javax.swing.JLabel jlbID;
     private javax.swing.JLabel jlbNome;
-    private javax.swing.JLabel jlbUser;
-    private javax.swing.JTable tblGames;
+    private javax.swing.JLabel jlbResumo;
+    private javax.swing.JTable tblMovies;
+    private javax.swing.JTextField txtDiretor;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextArea txtResumo;
     // End of variables declaration//GEN-END:variables
 }
