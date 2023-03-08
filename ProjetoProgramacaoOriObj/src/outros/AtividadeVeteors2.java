@@ -3,7 +3,7 @@ package outros;
 
 import tools.Entrada;
 
-public class VetorsATV2 {
+public class AtividadeVeteors2 {
     public static void main(String[] args) {
         int vet[] = new int[10];
         int contador = 0;
