@@ -13,10 +13,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import models.Usuario;
 
-/**
- *
- * @author jonas
- */
 public class UsuarioController {
 
     public boolean login(String user, String pass) {
@@ -165,6 +161,8 @@ public class UsuarioController {
     }
 
     public void preencherLista(JTable jtbUsuarios) {
+        
+        System.out.println("Lista usuer lançada");
 
         Vector<String> cabecalhos = new Vector<>();
         Vector dadosTabela = new Vector();

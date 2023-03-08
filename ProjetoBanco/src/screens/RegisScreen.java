@@ -11,7 +11,6 @@ public class RegisScreen extends javax.swing.JFrame {
 
     public RegisScreen() {
         initComponents();
-
         atualizaLista();
     }
 
@@ -262,13 +261,14 @@ public class RegisScreen extends javax.swing.JFrame {
                                         .addComponent(txtNumCel, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnExcluir)
+                                .addComponent(btnAdicionar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnLimpas)
                                 .addGap(12, 12, 12)
-                                .addComponent(btnAlterar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                                .addComponent(btnAdicionar))
+                                .addComponent(btnExcluir)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()

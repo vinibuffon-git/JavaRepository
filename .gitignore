@@ -32,5 +32,9 @@ hs_err_pid*
 /AtividadeAula12/build/
 /ProjetoBanco/nbproject/private/
 /ProjetoBanco/build/
+<<<<<<< HEAD
 /ProjetoProgramacaoOO/nbproject/private/
 /ProjetoProgramacaoOO/build/
+=======
+/ProjetoBanco/dist/
+>>>>>>> ec6d034320d1d1ea881f417f61eebd5dc8fc143e

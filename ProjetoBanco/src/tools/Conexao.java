@@ -14,7 +14,7 @@ public class Conexao {
     private final static String DRIVER = "org.postgresql.Driver";
     private final static String URL = "jdbc:postgresql://localhost:5432/projetobanco";
     private final static String USER = "postgres";
-    private final static String PASS = "postgres";
+    private final static String PASS = "adx19jklmn";
     
     public static Connection con;
     public static Statement stmt;
@@ -23,7 +23,7 @@ public class Conexao {
         try {
             con = getConnection();
             stmt = con.createStatement();
-            System.out.print("Conexão com Banco de Dados Criada!");
+            System.out.print("Conexão com Banco de Dados Criada! ");
         } catch (Exception ex) {
             System.out.print(ex);
         }
