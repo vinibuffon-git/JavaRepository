@@ -333,7 +333,7 @@ public class MoviesScreen extends javax.swing.JFrame {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o nome do Filme", 'e');
             return false;
         } else if (txtGenero.getText().equals("")) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Genéro do Filme", 'e');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Gênero do Filme", 'e');
             return false;
         } else if (txtDiretor.getText().equals("")) {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Diretor do Filme", 'e');
