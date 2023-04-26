@@ -298,7 +298,7 @@ public class GameScreen extends javax.swing.JFrame {
             CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o nome do Jogo", 'e');
             return false;
         } else if (txtGenero.getText().equals("")) {
-            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Genéro do Jogo", 'e');
+            CaixaDeDialogo.obterinstancia().exibirMensagem("Informe o Gênero do Jogo", 'e');
             return false;
         }
         return true;
